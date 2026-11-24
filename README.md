@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pokédex - Optimización de transferencia de datos
 
-## Getting Started
+Aplicación web desarrollada con **Next.js 16**, **React**, **TypeScript** y **TanStack Query v5**, que consume la API pública de PokéAPI.
 
-First, run the development server:
+## Tecnologías utilizadas
+
+- Next.js 16 (App Router).
+- React.
+- TypeScript.
+- TanStack Query v5.
+- PokéAPI.
+
+## Funcionalidades
+
+- Listado de Pokémon con renderizado inicial desde el servidor.
+- Paginación de 50 Pokémon por página.
+- Visualización de imágenes y nombres.
+- Visualización de estadísticas, tipos, habilidades y cadena evolutiva.
+- Precarga de información al pasar el cursor sobre las tarjetas.
+- Hidratación de datos entre servidor y cliente.
+- Estrategia de caché para reducir solicitudes repetidas.
+
+
+### Precarga de datos
+
+Se implementa `prefetchQuery` en las tarjetas de Pokémon mediante el evento `onMouseEnter`.
+
+Esto permite solicitar anticipadamente la información del Pokémon antes de que el usuario abra su página de detalles.
+
+### Hidratación
+
+Se utilizan `dehydrate` y `HydrationBoundary` para transferir al cliente los datos obtenidos durante el renderizado del servidor.
+
+Así se evita realizar nuevamente una consulta cuando el cliente recibe información que ya fue precargada.
+
+## Instalación
+
+Clonar el repositorio:
+
+```bash
+git clone https://github.com/3smer4ld4/Pokedex.git
+```
+
+Ingresar al proyecto:
+
+```bash
+cd pokedex
+```
+
+Instalar dependencias:
+
+```bash
+npm install
+```
+
+Iniciar el servidor de desarrollo:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrir en el navegador:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Compilación de producción
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+## API utilizada
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+[PokéAPI](https://pokeapi.co/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Autor
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Los caché son datos volatiles que con determinada durabilidad facilitad el acceso dentro de una pagina.

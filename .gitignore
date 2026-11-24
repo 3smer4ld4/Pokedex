@@ -1,5 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
+# en genral no hay mucho qeu ocuktar, principalmente por la ausencia de key privadas, igualmente es bueno revisar esto,
+# miaw :3
 # dependencies
 /node_modules
 /.pnp
